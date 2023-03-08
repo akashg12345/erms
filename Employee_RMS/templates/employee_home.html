@@ -1,0 +1,15 @@
+{% extends 'employee_home_base.html'%}
+
+{% block content %}
+<h5 class = "text-danger p-2" style = "border-bottom: 2px solid orange ;"> EMPLOYEE DASHBOARD</h5>
+<div class = "row text-center">
+    <div class = "col-sm-12 p-2">
+        <div class = "card shadow">
+            <div class ="card-body">
+                <center><h5 class="text-danger"> Welcome Back To ERMS </h5><center>
+                <h4>{{request.user.first_name}} - {{request.user.last_name}}</h4>
+            </div>
+            <a href = "{% url 'home'%}" class="float-right text-danger mt-2"> Go Back To Home</a>
+            </div></div></div>
+
+{% endblock %}

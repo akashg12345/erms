@@ -1,0 +1,102 @@
+{% extends 'admin_base.html'%}
+
+{% block content%}
+<div class="card shadow ">
+  <div clss = "card-body">
+      
+    <h5 class ="p-2" style= "border-bottom:3px solid blue ;background-color:blueviolet;"> Update Education Details </h5>
+    <div class = "container-fluid" style= "background-color:lightgreen;">
+        <form method="post">
+            {%csrf_token%}
+        <table class = "table table-bordered">
+            <tr>
+                <th> PostGraduation </th>
+                <td><input type = "text" name = "PostGraduation" class ="form-control" value ="{{education.PostGraduation}}"></td>
+            </tr>
+            <tr>
+                <th> PostGraduation Institution </th>
+                <td><input type = "text" name = "CollegePG" class ="form-control" value ="{{education.CollegePG}}"></td>
+            </tr>
+            <tr>
+                <th> Year Of Passing</th>
+                <td><input type = "text" name = "YearOfPassing1" class ="form-control" value ="{{education.YearOfPassing1}}"></td>
+            </tr>
+            <tr>
+                <th> PostGraduation Percentage</th>
+                <td><input type = "text" name = "PGPercentage" class ="form-control" value ="{{education.PGPercentage}}"></td>
+            </tr>
+
+            <tr>
+                <th> Graduation</th>
+                <td><input type = "text" name = "Graduation" class ="form-control" value ="{{education.Graduation}}"></td>
+            </tr>
+
+            <tr>
+                <th> Graduation Institution </th>
+                <td><input type = "text" name = "CollegeGraduation" class ="form-control" value ="{{education.CollegeGraduation}}"></td>
+            </tr>
+            <tr>
+                <th> Year Of Passing</th>
+                <td><input type = "text" name = "YearOfPassing2" class ="form-control" value ="{{education.YearOfPassing2}}"></td>
+            </tr>
+            <tr>
+                <th> Graduation Percentage</th>
+                <td><input type = "text" name = "GraduationPercentage" class ="form-control" value ="{{education.GraduationPercentage}}"></td>
+            </tr>
+
+            <tr>
+                <th> HSC COURSE</th>
+                <td><input type = "text" name = "CourseHSC" class ="form-control" value ="{{education.CourseHSC}}"></td>
+            </tr>
+
+            <tr>
+                <th> HSC Institution </th>
+                <td><input type = "text" name = "CollegeHSC" class ="form-control" value ="{{education.CollegeHSC}}"></td>
+            </tr>
+            <tr>
+                <th> Year Of Passing</th>
+                <td><input type = "text" name = "YearOfPassing3" class ="form-control" value ="{{education.YearOfPassing3}}"></td>
+            </tr>
+            <tr>
+                <th> HSC Percentage</th>
+                <td><input type = "text" name = "HSCPercentage" class ="form-control" value ="{{education.HSCPercentage}}"></td>
+            </tr>
+
+            <tr>
+                <th> SSC COURSE</th>
+                <td><input type = "text" name = "CourseSSC" class ="form-control" value ="{{education.CourseSSC}}"></td>
+            </tr>
+
+            <tr>
+                <th> SSC Institution </th>
+                <td><input type = "text" name = "CollegeSSC" class ="form-control" value ="{{education.CollegeSSC}}"></td>
+            </tr>
+            <tr>
+                <th> Year Of Passing</th>
+                <td><input type = "text" name = "YearOfPassing4" class ="form-control" value ="{{education.YearOfPassing4}}"></td>
+            </tr>
+            <tr>
+                <th> SSC Percentage</th>
+                <td><input type = "text" name = "SSCPercentage" class ="form-control" value ="{{education.SSCPercentage}}"></td>
+            </tr>
+
+            
+        </table>
+        <input type ="submit" value = "Submit" class = "btn btn-success px-4">
+        </form>
+        {% if error == "no" %}
+  <script>
+    alert("Data Updated Successfull");
+    window.location = ("{% url 'edit_edu_admin' education.user.id %}");
+  </script>
+  {% endif %}
+  
+  {% if error == "yes" %}
+  <script>
+    alert("Something went wrong updatation failed !!!");
+    window.location = ("{% url 'all_employee' %}");
+  </script>
+  {% endif %}
+
+
+        {%endblock%}

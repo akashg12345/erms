@@ -1,0 +1,62 @@
+{% extends 'admin_base.html'%}
+
+{% block content%}
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }} text-danger">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<div class="card shadow m-5">
+  
+    <h5 class ="p-2" style= "border-bottom:3px solid blue ;background-color:blueviolet;"> Reset Password</h5>
+    <div class = "container-fluid" style= "background-color:lightgreen;">
+      <form method = "post">
+        {% csrf_token %}
+        <div class = "form-row">
+        <div class =  "col-sm-6 ">
+            <div class="form-group">
+            <lable> Current Password</lable>
+            <input type="password" name="currentpass" class = "form-control" placeholder="Enter Current Password "  required>
+            </div> 
+        </div></div>
+        <div class = "form-row">
+            <div class =  "col-sm-6">
+              <div class="form-group">
+              <lable>New Password</lable>
+              <input type="password" name="newpass" class = "form-control" placeholder="Enter New Password"  required>
+            </div> 
+            </div>
+      
+            <div class =  "col-sm-6">
+              <div class="form-group">
+              <lable> Confirm New Password</lable>
+              <input type="password" name="confnewpass" class = "form-control" placeholder="Re-Enter Password"  required>
+            </div> 
+            </div>
+            </div>
+            <br><hr style= "border-bottom:3px solid rgb(255, 0, 0)">
+
+        <input type="submit" value= "Submit" class = " m-2 px-3 btn btn-success">
+
+      </form>
+      </div>
+</div>
+{% if error == "no" %}
+<script>
+  alert("Password Changed Successfully");
+  window.location = ("{% url 'admin_login' %}");
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+  alert("ENTER CORRECT CURRENT PASSWORD!!!");
+  window.location = ("{% url 'admin_change_pass' %}");
+</script>
+{% endif %}
+
+{%endblock%}

@@ -1,0 +1,103 @@
+{% extends 'admin_base.html'%}
+
+{% block content%}
+<div class="card shadow ">
+  
+    <h5 class ="p-2" style= "border-bottom:3px solid blue ;background-color:blueviolet;"> Edit Employee </h5>
+    <div class = "container-fluid" style= "background-color:lightgreen;">
+      <form method = "post">
+        {% csrf_token %}
+      <div class = "form-row">
+        <div class =  "col-sm-6">
+          <div class="form-group">
+          <lable>First Name</lable>
+          <input type="text" name="Fname" value = "{{employee.FirstName}}" class = "form-control" placeholder="first name" pattern ="[A-Za-z]+" required>
+        </div> 
+        </div>
+  
+        <div class =  "col-sm-6">
+          <div class="form-group">
+          <lable>Last Name</lable>
+          <input type="text" name="Lname" value = "{{employee.LastName}}"class = "form-control" placeholder="last name" pattern ="[A-Za-z]+" required>
+        </div> 
+        </div>
+        </div>
+        <div class = "form-row">
+          <div class =  "col-sm-6">
+            <div class="form-group">
+            <lable>Student Standard</lable>
+            <input type="text" name="Ecode" value = "{{employee.Ecode}}"class = "form-control" placeholder=" Enter Student Standard" pattern="[0-9]+" required>
+          </div> 
+          </div>
+          <div class =  "col-sm-6">
+            <div class="form-group">
+            <lable>Student Address</lable>
+            <input type="text" name="Edesig" value = "{{employee.Edesignation}}" class = "form-control" placeholder="Enter Student Address" >
+          </div> 
+          </div>
+          </div>
+          <div class = "form-row">
+          <div class =  "col-sm-6">
+            <div class="form-group">
+            <lable>Email</lable>
+            <input type="email" name="Email" value = "{{employee.Email}}"class = "form-control" placeholder="Enter Email id" required>
+          </div> 
+          </div>
+
+          <div class =  "col-sm-6">
+            <div class="form-group">
+            <lable>Contact No.</lable>
+            <input type="text" name="contact" value = "{{employee.Econtact}}"class = "form-control" placeholder="Enter contact number" required>
+          </div> 
+          </div>
+          </div>
+  
+          <div class = "form-row">
+            <div class =  "col-sm-6">
+              <div class="form-group">
+              <lable>Student ID </lable>
+              <input type="text" name="ED" value = "{{employee.Edepartment}}" class = "form-control" placeholder="Enter Student Details"  required>
+            </div> 
+            </div></div>
+            <div class = "form-row">
+            <div class =  "col-sm-6">
+              <div class="form-group">
+              <lable>Joining date [value="{{employee.date_created}}"]</lable>
+              <input type="date" name="Jdate"  class = "form-control"  >
+            </div> 
+            </div>
+            <div class ="col-sm-6">
+                <div class = "form-group">
+                    <lable>GENDER [{{employee.gender}}]</lable>
+                    <select name="gender"   class = "form-control">
+                        <option value = "None">Select Gender</option>
+                        <option value = "Male">Male</option>
+                        <option value = "Female">Female</option>
+                    
+                    
+                    </select></div></div></div>
+
+            
+
+
+            <hr style= "border-bottom:3px solid blue">
+  
+          <input type="submit" value= "Submit" class = " m-1 px-3 btn btn-danger">
+  
+        </form>
+    </div>
+</div>
+  {% if error == "no" %}
+  <script>
+    alert("Profile Update Successfull");
+    window.location = ("{% url 'edit_employee' employee.id %}");
+  </script>
+  {% endif %}
+  
+  {% if error == "yes" %}
+  <script>
+    alert("Something went wrong updatation failed !!!");
+    window.location = ("{% url 'employee_login' %}");
+  </script>
+  {% endif %}
+{% endblock %}

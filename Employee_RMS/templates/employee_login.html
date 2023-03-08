@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+
+<div class="card shadow m-5" style="width: 58rem;">
+  
+  <h5 class ="p-2" style= "border-bottom:3px solid orange ;background-color:yellow;"> LOGIN ACCOUNT</h5>
+  <div class = "container-fluid " style= "background-color:darksalmon;">
+    <form method = "post">
+      {% csrf_token %}
+    <div class = "form-row">
+      <div class =  "col-sm-5">
+        <div class="form-group">
+        <lable>Email</lable>
+        <input type="email" name="Email" class = "form-control" placeholder="Enter Email Id"  required>
+      </div> 
+      </div>
+    </div>
+      <div class = "form-row">
+      <div class =  "col-sm-5">
+        <div class="form-group">
+        <lable>Password</lable>
+        <input type="password" name="pwd" class = "form-control" placeholder="Enter password"  required>
+      </div> 
+      </div>
+      </div>
+    
+      
+        <hr style= "border-bottom:3px solid purple">
+        <input type="submit" value ="Login" class = " m-2 px-3 btn btn-info">
+
+      </form>
+    </div>
+</div>
+{% if error == "no" %}
+<script>
+  alert("LOGIN Successfull");
+  window.location = ("{% url 'employee home' %}");
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+  alert("login failed invalid credential");
+  window.location = ("{% url 'employee_login' %}");
+</script>
+{% endif %}
+{%endblock%}

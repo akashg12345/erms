@@ -1,0 +1,81 @@
+{% extends 'admin_base.html'%}
+
+{% block content%}
+<div class="card shadow ">
+  <div clss = "card-body">
+      
+    <h5 class ="p-2" style= "border-bottom:3px solid blue ;background-color:blueviolet;"> Update Employee Experience </h5>
+    <div class = "container-fluid" style= "background-color:lightgreen;">
+        <form method="post">
+            {%csrf_token%}
+        <table class = "table table-bordered">
+            <tr>
+                <th> First Company Name</th>
+                <td><input type = "text" name = "c1name" class ="form-control" value ="{{experience.Company1Name}}"></td>
+            </tr>
+
+            <tr>
+                <th> First Company Designation</th>
+                <td><input type = "text" name = "c1desig" class ="form-control" value ="{{experience.Company1Desig}}"></td>
+            </tr>
+            <tr>
+                <th> First Company Duration</th>
+                <td><input type = "text" name = "c1d" class ="form-control" value ="{{experience.Company1Duration}}"></td>
+            </tr>
+            <tr>
+                <th> First Company Salary</th>
+                <td><input type = "text" name = "c1s" class ="form-control" value ="{{experience.Company1salary}}"></td>
+            </tr>
+            <tr>
+                <th> Second Company Name</th>
+                <td><input type = "text" name = "c2name" class ="form-control" value ="{{experience.Company2Name}}"></td>
+            </tr>
+
+            <tr>
+                <th> Second Company Designation</th>
+                <td><input type = "text" name = "c2desig" class ="form-control" value ="{{experience.Company2Desig}}"></td>
+            </tr>
+            <tr>
+                <th> Second Company Duration</th>
+                <td><input type = "text" name = "c2d" class ="form-control" value ="{{experience.Company2Duration}}"></td>
+            </tr>
+            <tr>
+                <th> Second Company Salary</th>
+                <td><input type = "text" name = "c2s" class ="form-control" value ="{{experience.Company2salary}}"></td>
+            </tr>
+            <tr>
+                <th> Third Company Name</th>
+                <td><input type = "text" name = "c3name" class ="form-control" value ="{{experience.Company3Name}}"></td>
+            </tr>
+
+            <tr>
+                <th> Third Company Designation</th>
+                <td><input type = "text" name = "c3desig" class ="form-control" value ="{{experience.Company3Desig}}"></td>
+            </tr>
+            <tr>
+                <th> Third Company Duration</th>
+                <td><input type = "text" name = "c3d" class ="form-control" value ="{{experience.Company3Duration}}"></td>
+            </tr>
+            <tr>
+                <th> Third Company Salary</th>
+                <td><input type = "text" name = "c3s" class ="form-control" value ="{{experience.Company3salary}}"></td>
+            </tr>
+        </table>
+        <input type ="submit" value = "Submit" class = "btn btn-danger px-4">
+        </form>
+        {% if error == "no" %}
+  <script>
+    alert("Data Updated Successfull");
+    window.location = ("{% url 'edit_exp_admin' experience.user.id %}");
+  </script>
+  {% endif %}
+  
+  {% if error == "yes" %}
+  <script>
+    alert("Something went wrong updatation failed !!!");
+    window.location = ("{% url 'employee home' %}");
+  </script>
+  {% endif %}
+
+
+        {%endblock%}
