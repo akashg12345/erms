@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-xt_*n9^18!(ft*s1#x-ec=pe&m9_z3g)b2njtj1!uaoq_7$#ek
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -87,7 +86,7 @@ DATABASES = {
         'NAME': 'ERMS',
         'USER': 'root',
         'PASSWORD': '1991',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }

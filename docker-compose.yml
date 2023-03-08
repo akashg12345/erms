@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: ERMS
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1991
+      MYSQL_ROOT_PASSWORD: 1991
+    ports:
+      - "3306:3306"
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  db-data:
