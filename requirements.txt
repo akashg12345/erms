@@ -6,3 +6,5 @@ django-mysql==3.8.1
 mysqlclient==2.0.3
 python-dotenv==0.21.0
 dj-database-url==1.2.0
+whitenoise==6.2.0
+Brotli==1.0.9
