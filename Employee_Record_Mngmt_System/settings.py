@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'Employee_RMS',
     'crispy_forms',
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -153,7 +152,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_ROOT = "Employee_Record_Mngmt_System/Employee_RMS/static"
+STATIC_ROOT = "Employee_Record_Mngmt_System/static"
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
