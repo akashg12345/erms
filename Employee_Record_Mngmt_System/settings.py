@@ -103,7 +103,10 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
+import secrets
 
+generated_key = secrets.token_urlsafe(15)
+generated_key = 'hTc3ba4DYcKY93SseCqi'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -152,7 +155,7 @@ STATIC_ROOT = "Employee_Record_Mngmt_System/Employee_RMS/static"
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'hTc3ba4DYcKY93SseCqi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
