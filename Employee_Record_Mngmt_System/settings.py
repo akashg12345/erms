@@ -106,7 +106,7 @@ if DEBUG:
         'NAME': 'ERMS',
         'USER': 'root',
         'PASSWORD': '1991',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'HOST': '172.17.0.1',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
