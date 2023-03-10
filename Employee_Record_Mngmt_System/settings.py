@@ -81,6 +81,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Employee_Record_Mngmt_System.wsgi.application'
 
+DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
+
+ALLOWED_HOSTS = ["*"]
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -91,7 +94,13 @@ WSGI_APPLICATION = 'Employee_Record_Mngmt_System.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASES = {
+
+import dj_database_url
+
+DEBUG = 'RENDER' not in os.environ
+
+if DEBUG:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'ERMS',
@@ -101,6 +110,16 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+    
+
+if not DEBUG:
+
+    DATABASES = {
+    'default': dj_database_url.config(
+    default=os.environ.get('DATABASE_URL'),
+    )
+  }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -159,6 +178,3 @@ STATIC_ROOT = "Employee_Record_Mngmt_System/static"
 SECRET_KEY = 'hTc3ba4DYcKY93SseCqi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
-
-ALLOWED_HOSTS = ["*"]
