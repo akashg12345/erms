@@ -97,7 +97,7 @@ ALLOWED_HOSTS = ["*"]
 
 import dj_database_url
 
-DEBUG = 'RENDER' not in os.environ
+DEBUG = True
 
 if DEBUG:
     DATABASES = {
