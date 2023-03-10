@@ -116,7 +116,7 @@ if not DEBUG:
 
     DATABASES = {
     'default': dj_database_url.config(
-    default=os.environ.get('DATABASE_URL'),
+    default=os.environ.get("postgres://careerpoint_user:qCAnScndoP0V83I3jaraZk49FAcBCL6r@dpg-cg4o5t82qv287cq3jubg-a/careerpoint"),
     )
   }
 
