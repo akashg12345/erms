@@ -160,7 +160,7 @@ USE_TZ = True
 import os
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, r'Employee_RMS\static')
+    os.path.join(BASE_DIR, r'\static')
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
