@@ -85,22 +85,13 @@ DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
 
 ALLOWED_HOSTS = ["*"]
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 import dj_database_url
 
 DEBUG = True
 
-if DEBUG:
-    DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'ERMS',
@@ -111,14 +102,9 @@ if DEBUG:
     }
 }
     
+    
 
-if not DEBUG:
 
-    DATABASES = {
-    'default': dj_database_url.config(
-    default=os.environ.get("postgres://careerpoint_user:qCAnScndoP0V83I3jaraZk49FAcBCL6r@dpg-cg4o5t82qv287cq3jubg-a/careerpoint"),
-    )
-  }
 
 
 # Password validation
