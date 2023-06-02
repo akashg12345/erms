@@ -57,26 +57,17 @@ class EmployeeEducation1(models.Model):
         db_table = "EmployeeEDU1"
 
 
-class EmployeeExperience(models.Model):
+class StudentResult(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    Company1Name = models.CharField(max_length=100, null=True)
-    Company1Desig = models.CharField(max_length=100, null=True)
-    Company1Duration = models.CharField(max_length=100, null=True)
-    Company1salary = models.CharField(max_length=100, null=True)
-    Company2Name = models.CharField(max_length=100, null=True)
-    Company2Desig = models.CharField(max_length=100, null=True)
-    Company2Duration = models.CharField(max_length=100, null=True)
-    Company2salary = models.CharField(max_length=100, null=True)
-    Company3Name = models.CharField(max_length=100, null=True)
-    Company3Desig = models.CharField(max_length=100, null=True)
-    Company3Duration = models.CharField(max_length=100, null=True)
-    Company3salary = models.CharField(max_length=100, null=True)
+    TestName = models.CharField(max_length=100,null=True)
+    TestTopics = models.CharField(max_length=100,null=True)
+    TestScore = models.CharField(max_length=100,null=True)
 
     def __str__(self):
         return self.user.username
 
     class Meta:
-        db_table = "EmployeeExp"
+        db_table = "EmployeeExp1"
     
 class StudyMaterial(models.Model):
     

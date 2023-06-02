@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'Employee_Record_Mngmt_System.wsgi.application'
 
 DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [".vercel.app", ".now.sh"]
 
-
+import django_heroku
 
 import dj_database_url
 
@@ -94,10 +94,10 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'ERMS',
+        'NAME': 'ERMS2',
         'USER': 'root',
         'PASSWORD': '1991',
-        'HOST': '172.17.0.1',   # Or an IP Address that your DB is hosted on
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
@@ -146,7 +146,7 @@ USE_TZ = True
 import os
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, r'\static')
+    os.path.join(BASE_DIR, r'Employee_Record_Mngmt_System\static')
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -157,10 +157,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_ROOT = "Employee_Record_Mngmt_System/static"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-
+print(BASE_DIR)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'hTc3ba4DYcKY93SseCqi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+django_heroku.settings(locals())

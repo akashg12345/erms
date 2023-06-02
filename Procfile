@@ -1,0 +1,1 @@
+web gunicorn Employee_Record_Mngmt_System.wsgi:application --log-file -

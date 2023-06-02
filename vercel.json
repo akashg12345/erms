@@ -1,0 +1,25 @@
+{
+
+    "builds": [{
+
+        "src": "Employee_Record_Mngmt_System/wsgi.py",
+
+        "use": "@vercel/python",
+
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+
+    }],
+
+    "routes": [
+
+        {
+
+            "src": "/(.*)",
+
+            "dest": "Employee_Record_Mngmt_System/wsgi.py"
+
+        }
+
+    ]
+
+}

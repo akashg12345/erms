@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 # from .forms import EmployeeForm
 from django.contrib import messages
-from .models import EmployeeCreate, EmployeeEducation1, EmployeeExperience, StudyMaterial, TestResults
+from .models import EmployeeCreate, EmployeeEducation1, StudentResult, StudyMaterial, TestResults
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 import csv
@@ -42,7 +42,7 @@ def registration(request):
                 object = EmployeeCreate.objects.create(
                     FirstName=N, LastName=L, Ecode=EC, Email=EM, user=U, cover=cv)
                 object.save()
-                exp = EmployeeExperience.objects.create(user=U)
+                exp = StudentResult.objects.create(user=U)
                 exp.save()
                 edu = EmployeeEducation1.objects.create(user=U)
                 edu.save()
@@ -157,7 +157,7 @@ def employee_experience(request):
 
     user = request.user
     print(request.user, "USER CURRENT")
-    experience = EmployeeExperience.objects.get(user=user)
+    experience = StudentResult.objects.get(user=user)
 
     return render(request, "myexperience.html", locals())
 
@@ -167,7 +167,7 @@ def edit_experience(request):
         return redirect("employee_login")
     error = ""
     user = request.user
-    experience = EmployeeExperience.objects.get(user=user)
+    experience = StudentResult.objects.get(user=user)
     if request.method == "POST":
         c1n = request.POST["c1name"]
         c1desig = request.POST["c1desig"]

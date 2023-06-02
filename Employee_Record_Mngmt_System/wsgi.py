@@ -14,3 +14,4 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Employee_Record_Mngmt_System.settings')
 
 application = get_wsgi_application()
+app = application
