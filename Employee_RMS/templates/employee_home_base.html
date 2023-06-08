@@ -25,10 +25,11 @@
         <div class="list-group col-sm-12 p-0">
           <a href="{% url 'employee home' %}" class = "text-center p-2 col-sm-10  list-group-item list-group-item-warning list-group-item-action "> Dashboard</a>
           <a href="{% url 'profile' %}" class = " text-center col-sm-10 p-2 list-group-item list-group-item-info list-group-item-action"> Profile</a>
-          <a href="{% url 'education'%}" class = " col-sm-10 p-2 list-group-item list-group-item-danger list-group-item-action"> Education Qualification</a>
-          <a href="{%url 'experience'%}" class = " text-center col-sm-10 p-2 list-group-item list-group-item-secondry list-group-item-action"> Experience</a>
-          <a href="{%url 'edit_experience'%}" class = " text-center col-sm-10 p-2 list-group-item list-group-item-info list-group-item-action"> Update Experience</a>
-          <a href="{% url 'edit_education'%}" class = " text-center col-sm-10 p-2 list-group-item list-group-item-warning list-group-item-action"> Update Qualification</a>
+          
+          
+          <a  href="{% url 'material'%}"  class=  " text-center col-sm-10 p-2 list-group-item list-group-item-warning list-group-item-action"> Material </a>
+          
+          <a href="{% url 'results'%}" class = " text-center col-sm-10 p-2 list-group-item list-group-item-danger list-group-item-action"> View Score </a>
           <a href="{% url 'change_password'%}" class = " text-center col-sm-10 p-2 list-group-item list-group-item-warning list-group-item-action"> Change Password</a>
           <a href="{% url 'logout'%}" class = " text-center col-sm-10 p-2 list-group-item list-group-item-warning list-group-item-action"> Logout</a>
         </div>

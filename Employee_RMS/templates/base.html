@@ -1,62 +1,99 @@
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
-  <configuration>
-    <system.webServer>
-      <validation validateIntegratedModeConfiguration="false" />
-    </system.webServer>
-  </configuration>
 <head>
-  <title>CLass</title>
+  <title>Class</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
-<body style="background-color:powderblue;">
-    <link rel = "stylesheet" href = "{% static 'css/my_style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-<nav class="navbar navbar-expand-md b" style="background-color:coral;">
-  <a class="navbar-brand " href="#">CAREER POINT</a>
-  <button class="navbar-toggler" style="color: yellow;"type="button" data-toggle="collapse" data-target=".navbar-collapse">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+  
+  <style>
+    body {
+      background-color: powderblue;
+    }
+    
+    .navbar {
+      background-color: coral;
+    }
+    
+    .navbar-brand {
+      color: white;
+      font-weight: bold;
+    }
+    
+    .navbar-toggler {
+      color: yellow;
+    }
+    
+    .nav-link {
+      color: white;
+    }
+    
+    .nav-link i {
+      margin-right: 5px;
+    }
+    
+    .content {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .social-icons a {
+      color: coral;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+      color: #f2b9b9;
+    }
+  </style>
+</head>
+<body>
+  
+<nav class="navbar navbar-expand-md">
+  <a class="navbar-brand" href="#">CAREER POINT</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
     <span class="navbar-toggler-icon"></span>
     <span class="sr-only">Toggle navigation</span>
     <span class="icon-bar">
-      <i class="fas fa-bars" style = "color: antiquewhite;"></i>
+      <i class="fa fa-bars"></i>
     </span>
-    
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'home'%}"><i class="fa fa-user"></i> Home </a>
+        <a class="nav-link" href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a>
       </li>
-
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'employee_login' %}"> <i class="fa fa-sign-in"></i> Student login </a>
+        <a class="nav-link" href="{% url 'employee_login' %}"><i class="fa fa-sign-in-alt"></i> Student Login</a>
       </li>
-      
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'registration'%}"><i class="fa fa-registered"></i> Student SignUp </a>
+        <a class="nav-link" href="{% url 'registration' %}"><i class="fa fa-user-plus"></i> Student Sign Up</a>
       </li>
-      
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'admin_login'%}"><i class="fa fa-user"></i> Admin Login </a>
-      </li>   
+        <a class="nav-link" href="{% url 'admin_login' %}"><i class="fa fa-user"></i> Admin Login</a>
+      </li>
     </ul>
   </div>  
 </nav>
 
+<div class="content">
+  {% block content %}
+    <!-- Content goes here -->
+  {% endblock content %}
+</div>
 
-{% block content %} 
-  
-  
-{% endblock content %}    
 
 </body>
+
+
 </html>

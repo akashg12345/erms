@@ -6,6 +6,7 @@ from django.contrib import messages
 from .models import EmployeeCreate, EmployeeEducation1, StudentResult, StudyMaterial, TestResults
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 import csv
 
 # Create your views here.
@@ -71,11 +72,11 @@ def employee_login(request):
 
 def employee_home(request):
     print(request.user.is_authenticated)
-
+    user_id = request.user.id
     if not request.user.is_authenticated:
         return redirect("employee_login")
 
-    return render(request, "employee_home.html")
+    return render(request, "employee_home.html", locals())
 
 
 def employee_profile(request):
@@ -138,13 +139,11 @@ def admin_login(request):
         P = request.POST["password"]
 
         user = authenticate(username=U, password=P)
-
-        if user:
-            if user.is_staff:
-                login(request, user)
-                error = "no"
-            else:
-                error = "yes"
+        error = "yes"
+        print(user)
+        if user.is_staff:
+            login(request, user)
+            error = "no"
         else:
             error = "yes"
     return render(request, "login_Admin.html", locals())
@@ -328,7 +327,7 @@ def admin_change_password(request):
 
 
 def admin_Logout(request):
-    if not request.user.is_authenticated:
+    if not request.user.is_staff:
         return redirect("employee_login")
     logout(request)
     return redirect("admin_login")
@@ -516,66 +515,79 @@ def CsV_File_Expo(request):
     response['Content-Disposition'] = " attachments ; filename = export_csv.csv "
     return response
 
-def downloadresult(request,pid):
+
+def downloadresult(request, pid):
 
     test_details = TestResults.objects.get(id=pid)
     response = HttpResponse(content_type="text/csv")
     print(test_details)
     csv_writer = csv.writer(response)
-    fields = [ "TestName", "TestTopics", "Material",]
+    fields = ["TestName", "TestTopics", "Material",]
     csv_writer.writerow(fields)
 
-    csv_writer.writerow((test_details.TestName, test_details.TestTopics, test_details.Material,))
+    csv_writer.writerow(
+        (test_details.TestName, test_details.TestTopics, test_details.Material,))
 
     response['Content-Disposition'] = " attachments ; filename = export_csv.csv "
     return response
 
 
-
+@login_required(login_url="employee_login")
 def results(request):
     result = TestResults.objects.all()
-    return render(request, "testresult.html", context= {"result":result})
+    return render(request, "testresult.html", context={"result": result})
+
 
 def uploadresult(request):
     if request.method == "POST":
-        
 
         name = request.POST["NAME"]
         topics = request.POST["TOPICS"]
         file = request.FILES["FILE"]
-        print(name,topics)
+        print(name, topics)
         obj = TestResults.objects.create(
             TestName=name, TestTopics=topics, Material=file)
         obj.save()
         return redirect("results")
     else:
         return render(request, "uploadresult.html", locals())
+
+
 def uploadmaterial(request):
     if request.method == "POST":
-        
+
         name = request.POST["NAME"]
         topcis = request.POST["TOPICS"]
         file = request.FILES["FILE"]
         obj = StudyMaterial.objects.create(
             SubjectName=name, SubjectTopics=topcis, Material=file)
         obj.save()
-        return render(request, "studymaterial.html", locals())
+        return render(request, "studymaterial2.html", locals())
     else:
         return render(request, "uploadmaterial.html", locals())
 
-def deletematerial(request,id):
-    material = StudyMaterial.objects.get(id = id)
-    print("hhhhhhhhhhhhhhh",material,"hhhhhhhhhhhhhhhhhhhhhhhh")
+
+def deletematerial(request, id):
+    material = StudyMaterial.objects.get(id=id)
+    print("hhhhhhhhhhhhhhh", material, "hhhhhhhhhhhhhhhhhhhhhhhh")
 
     material.delete()
     return redirect("material")
-def deleteresult(request,id):
-    material = TestResults.objects.get(id = id)
-    print("hhhhhhhhhhhhhhh",material,"hhhhhhhhhhhhhhhhhhhhhhhh")
+
+
+def deleteresult(request, id):
+    material = TestResults.objects.get(id=id)
+    print("hhhhhhhhhhhhhhh", material, "hhhhhhhhhhhhhhhhhhhhhhhh")
     material.delete()
     return redirect("results")
+
+
 def material(request):
-    
+
     material = StudyMaterial.objects.all()
-    print(material)
-    return render(request,"studymaterial.html", locals())
+    stat = "N"
+    print(request.user)
+    if request.user.is_staff:
+        stat = "Y"
+        print("HELLO HOW ARE YOU")
+    return render(request, "studymaterial2.html", locals())

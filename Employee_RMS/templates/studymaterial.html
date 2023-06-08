@@ -39,7 +39,9 @@
 {% block content %} 
 <div class = "card-body">
     <h5 class ="p-2" style= "border-bottom:3px solid blue ;background-color:darkorange;">All Material</h5>
+    {% if stat == "Y" %}
     <a class="nav-link" style= "background-color:rgb(238, 144, 152);" href="{% url 'uploadmaterial'%}"><i class="fa fa-user"></i> Uploadmaterial </a><br>
+    {%endif%}
     <div class = "container-fluid col-sm-12" style= "background-color:lightgreen;">
 
     <table class = "table table-bordered  col-sm-6" id="js_example">
@@ -69,7 +71,9 @@
                           <span class="text-muted">No cover</span>
                         {% endif %}
                     </td>
-                    <td><a href="{% url 'deletematerial' i.id %}" class="btn btn-primary " aria-current="page">Delete</a>
+                    {% if stat == "Y" %}
+                    <td><a href="{% url 'deletematerial' i.id %}" class="btn btn-primary " aria-current="page">Delete</a></td>
+                    {%endif%}
             </tr> 
             {%endfor%}
 

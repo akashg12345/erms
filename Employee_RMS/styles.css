@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+  }
+  
+  .material {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .material img {
+    width: 300px;
+    height: 200px;
+  }
+  
+  .material h2 {
+    margin-top: 10px;
+  }
+  
+  .material p {
+    margin: 10px 0;
+  }
+  

@@ -76,6 +76,8 @@ class StudyMaterial(models.Model):
     Material = models.FileField(upload_to="records/material", null=True, blank=True)
     class Meta:
         db_table = "StudyMaterial"
+
+
 class TestResults(models.Model):
     TestName = models.CharField(max_length=100,null=True)
     TestTopics = models.CharField(max_length=100,null=True)
